@@ -1,0 +1,35 @@
+name: Déployer sur Hostinger via FTP
+
+on:
+  push:
+    branches:
+      - main  # déploie à chaque push sur la branche principale
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v3
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Builder l’application
+        run: npm run build
+
+      - name: Déployer via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.HOSTINGER_FTP_SERVER }}
+          username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          server-dir: ${{ secrets.HOSTINGER_FTP_DIR }}
+          local-dir: dist
+          dangerous-clean-slate: true
