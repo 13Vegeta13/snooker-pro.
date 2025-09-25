@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Styles spécifiques pour l'application de snooker */
+.snooker-ball-red {
+  @apply bg-red-600 hover:bg-red-700 text-white;
+}
+
+.snooker-ball-yellow {
+  @apply bg-yellow-400 hover:bg-yellow-500 text-black;
+}
+
+.snooker-ball-green {
+  @apply bg-green-600 hover:bg-green-700 text-white;
+}
+
+.snooker-ball-brown {
+  @apply bg-amber-800 hover:bg-amber-900 text-white;
+}
+
+.snooker-ball-blue {
+  @apply bg-blue-600 hover:bg-blue-700 text-white;
+}
+
+.snooker-ball-pink {
+  @apply bg-pink-500 hover:bg-pink-600 text-white;
+}
+
+.snooker-ball-black {
+  @apply bg-gray-900 hover:bg-black text-white;
+}
+
+/* Animations pour les interactions de scoring */
+.scoring-button {
+  @apply transition-all duration-200 transform hover:scale-105 active:scale-95;
+}
+
+.break-animation {
+  @apply animate-pulse;
+}
+
+/* Styles pour les indicateurs de statut */
+.status-live {
+  @apply bg-red-600 text-white animate-pulse;
+}
+
+.status-completed {
+  @apply bg-green-600 text-white;
+}
+
+.status-scheduled {
+  @apply bg-blue-600 text-white;
+}
+
+/* Responsive design pour les grilles de scoring */
+@media (max-width: 640px) {
+  .scoring-grid {
+    @apply grid-cols-2 gap-2;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .scoring-grid {
+    @apply grid-cols-3 gap-3;
+  }
+}
+
+@media (min-width: 769px) {
+  .scoring-grid {
+    @apply grid-cols-4 gap-4;
+  }
+}
+
+/* Styles pour l'accessibilité */
+.focus-visible {
+  @apply outline-none ring-2 ring-ring ring-offset-2;
+}
+
+/* Styles pour les badges de break */
+.century-badge {
+  @apply bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold;
+}
+
+.half-century-badge {
+  @apply bg-gradient-to-r from-green-400 to-blue-500 text-white font-medium;
+}
+
+.maximum-badge {
+  @apply bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold animate-pulse;
+}
